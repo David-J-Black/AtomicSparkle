@@ -1,23 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=7 format=3 uid="uid://dot2pmvw6gxnf"]
 
-[ext_resource type="Script" path="res://scenes/App.gd" id="1_otvg2"]
+[ext_resource type="Script" path="res://scripts/App.gd" id="1_otvg2"]
 [ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
+[ext_resource type="PackedScene" uid="uid://dlgiswtfb25sp" path="res://models/ground.blend" id="3_2446t"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_rlcqq"]
+[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/interactable_entity.tscn" id="5_1ooi7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h2xf4"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_esic6"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_to0ia"]
+size = Vector3(10, 0.16, 10)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
-
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="GroundShape" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_h2xf4")
-
-[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.514682, 0)
-mesh = SubResource("BoxMesh_esic6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
@@ -25,6 +18,23 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_60b6d")]
 
-[node name="CameraMarker" type="Marker3D" parent="."]
+[node name="CameraMarker" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393301, 2.28514)
 
-[node name="Camera3D" type="Camera3D" parent="CameraMarker"]
+[node name="Camera3D" type="Camera3D" parent="Player/CameraMarker"]
+transform = Transform3D(1, 0, 0, 0, 0.876836, 0.48079, 0, -0.48079, 0.876836, 0, 1.31612, -0.180674)
+script = ExtResource("3_rlcqq")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13985, -0.0218148, 0.00188637)
+shape = SubResource("BoxShape3D_to0ia")
+
+[node name="ground" parent="StaticBody3D" instance=ExtResource("3_2446t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.182367)
+
+[node name="interactable_static_body" parent="." instance=ExtResource("5_1ooi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, 0.0581851, 3.15326)

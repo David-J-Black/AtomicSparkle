@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccncqt75nhkug"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_koeoo"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov2kh"]
+albedo_color = Color(0.101961, 0.482353, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xuf8v"]
+height = 1.0
+
+[node name="interactable_static_body" type="StaticBody3D"]
+
+[node name="visual_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50373, 0)
+mesh = SubResource("BoxMesh_koeoo")
+surface_material_override/0 = SubResource("StandardMaterial3D_ov2kh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453427, -0.00461318)
+shape = SubResource("CylinderShape3D_xuf8v")

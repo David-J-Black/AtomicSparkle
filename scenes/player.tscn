@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd7vr74jyu88o"]
+[gd_scene load_steps=7 format=3 uid="uid://dd7vr74jyu88o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ouy1s"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_tl0hb"]
+[ext_resource type="Script" path="res://scripts/player_interact_area.gd" id="3_1eeqj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f4es8"]
-radius = 0.75
+radius = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_xci2u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aq3ai"]
+radius = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752285, 0)
@@ -14,7 +19,20 @@ script = ExtResource("1_ouy1s")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173021, 0)
 shape = SubResource("SphereShape3D_f4es8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xci2u")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+script = ExtResource("2_tl0hb")
+
+[node name="Camera3D" type="Camera3D" parent="CameraTarget"]
+transform = Transform3D(1, 0, 0, 0, 0.928466, 0.371416, 0, -0.371416, 0.928466, 0, 1.23138, 4.12584)
+
+[node name="InteractArea" type="Area3D" parent="."]
+script = ExtResource("3_1eeqj")
+
+[node name="InteractShape" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("SphereShape3D_aq3ai")
