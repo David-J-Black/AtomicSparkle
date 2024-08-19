@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dot2pmvw6gxnf"]
+
+[ext_resource type="Script" path="res://scenes/App.gd" id="1_otvg2"]
+[ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2xf4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_esic6"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_otvg2")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GroundShape" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_h2xf4")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.514682, 0)
+mesh = SubResource("BoxMesh_esic6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_60b6d")]
+
+[node name="CameraMarker" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraMarker"]
