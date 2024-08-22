@@ -1,31 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" path="res://scripts/App.gd" id="1_otvg2"]
 [ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
 [ext_resource type="PackedScene" uid="uid://dlgiswtfb25sp" path="res://models/ground.blend" id="3_2446t"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_rlcqq"]
-[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/interactable_entity.tscn" id="5_1ooi7"]
+[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/InteractableEntity.tscn" id="5_1ooi7"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to0ia"]
 size = Vector3(10, 0.16, 10)
 
+[sub_resource type="Environment" id="Environment_gj6ua"]
+background_mode = 2
+ambient_light_color = Color(0.462745, 0.00392157, 0.913725, 1)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
-shadow_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("2_60b6d")]
-
-[node name="CameraMarker" type="Marker3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393301, 2.28514)
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraMarker"]
-transform = Transform3D(1, 0, 0, 0, 0.876836, 0.48079, 0, -0.48079, 0.876836, 0, 1.31612, -0.180674)
-script = ExtResource("3_rlcqq")
-
-[node name="Node3D" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -38,3 +29,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.1823
 
 [node name="interactable_static_body" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, 0.0581851, 3.15326)
+dialog = "Dude, what's up?"
+
+[node name="interactable_static_body2" parent="." instance=ExtResource("5_1ooi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, 0.0581851, -3.2432)
+dialog = "Hey bro, are you ok?"
+
+[node name="interactable_static_body3" parent="." instance=ExtResource("5_1ooi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, 0.0581851, 3.73018)
+dialog = "Dude, why are you asking all of us questions?"
+
+[node name="CameraBase" type="Node3D" parent="."]
+script = ExtResource("5_wlube")
+
+[node name="Camera3D" type="Camera3D" parent="CameraBase"]
+transform = Transform3D(1, 0, 0, 0, 0.928466, 0.371416, 0, -0.371416, 0.928466, 0, 1.23138, 4.12584)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gj6ua")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.424
+light_indirect_energy = 5.393
+shadow_enabled = true
+shadow_opacity = 0.83

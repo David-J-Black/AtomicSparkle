@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccncqt75nhkug"]
+[gd_scene load_steps=5 format=3 uid="uid://ccncqt75nhkug"]
+
+[ext_resource type="Script" path="res://scenes/InteractableEntity.gd" id="1_o02xe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_koeoo"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -10,6 +12,7 @@ albedo_color = Color(0.101961, 0.482353, 1, 1)
 height = 1.0
 
 [node name="interactable_static_body" type="StaticBody3D"]
+script = ExtResource("1_o02xe")
 
 [node name="visual_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50373, 0)

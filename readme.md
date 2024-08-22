@@ -8,7 +8,6 @@
   - Give the camera controls
 - Create a world/arena for the player to run around in
 - Create a platform that the player can interact with
-
 ## Things to do later
 - Dialog, if any
 - 
