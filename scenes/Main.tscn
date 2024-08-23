@@ -21,22 +21,22 @@ script = ExtResource("1_otvg2")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13985, -0.0218148, 0.00188637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13985, -0.110799, 0.00188637)
 shape = SubResource("BoxShape3D_to0ia")
 
 [node name="ground" parent="StaticBody3D" instance=ExtResource("3_2446t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.182367)
 
 [node name="interactable_static_body" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, 0.0581851, 3.15326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, -0.0163357, 3.15326)
 dialog = "Dude, what's up?"
 
 [node name="interactable_static_body2" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, 0.0581851, -3.2432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, -0.0163357, -3.2432)
 dialog = "Hey bro, are you ok?"
 
 [node name="interactable_static_body3" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, 0.0581851, 3.73018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, -0.0163357, 3.73018)
 dialog = "Dude, why are you asking all of us questions?"
 
 [node name="CameraBase" type="Node3D" parent="."]
