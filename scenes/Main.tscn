@@ -51,7 +51,6 @@ environment = SubResource("Environment_gj6ua")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
 light_color = Color(1, 0.941176, 0.87451, 1)
-light_energy = 3.424
 light_indirect_energy = 5.393
 shadow_enabled = true
 shadow_opacity = 0.83
