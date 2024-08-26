@@ -9,4 +9,3 @@ func _ready():
 	var player: CharacterBody3D = $Player
 	CameraService.set_camera_base(camera_base)
 	CameraService.set_player(player)
-

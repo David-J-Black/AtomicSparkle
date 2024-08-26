@@ -9,4 +9,3 @@ func on_player_interact():
 		return		
 	DialogService.create_dialog_box(dialog)
 	
-

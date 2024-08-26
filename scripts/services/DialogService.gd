@@ -18,4 +18,3 @@ func create_dialog_box(message: String):
 	if box:
 		box.add_text(message)
 		dialogs.add_child(box)
-

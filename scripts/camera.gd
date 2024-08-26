@@ -45,4 +45,3 @@ func _process(delta):
 		rotation.y += -input_dir.x * analog_sensitivity * delta
 
 		velocity = initial_rotation - Vector2(rotation_degrees.x, rotation_degrees.y)
-
