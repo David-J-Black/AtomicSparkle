@@ -1,11 +1,11 @@
 extends StaticBody3D
-class_name InteractableEntity
 
-@onready var animation_player = $little
+@onready var animation_player = $blenderNode
 @export var dialog: String = ""
 
 func _ready():
 	print("The Animation player is", animation_player)
+	animation_player.play_animation("idle", Animation.LOOP_PINGPONG)
 	
 
 func on_player_interact():

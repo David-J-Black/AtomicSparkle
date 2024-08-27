@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
-var InteractableEntity: PackedScene = preload("res://scenes/InteractableEntity.tscn")
+var InteractableEntity: PackedScene = preload("res://scenes/Npc.tscn")
 
 const SPEED = 5.0
 @export var jump_velocity = 5
 
-@onready var interact_pivot: Node3D = $InteractPivot
+@onready var interact_controller: Node3D = $InteractPivot
 @onready var interact_area: Area3D = $InteractPivot/InteractArea
-@onready var player_model: Node3D = $little_guy
+@onready var player_model = $blenderNode
 @onready var jump_hold_time_limit: float = 0.1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -15,7 +15,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var jump_hold_time: float = 0
 var has_ground_been_touched: bool = true
 
-func _unhandled_input(event: InputEvent) -> void:
+func _ready():
+	player_model.play_animation("idle", Animation.LOOP_PINGPONG)
+
+func _input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("interact"):
 		print("Interact pressed")
@@ -43,35 +46,42 @@ func _physics_process(delta):
 	var input_dir: Vector2 = get_input_direction()
 
 	if input_dir.length() > 0:
-
-		#Rotate the player model (Dont ask me why the input_dir has to be negated
-		interact_pivot.rotation.y = -input_dir.angle()
-		player_model.rotation.y = -input_dir.angle()
-#		rotation.y = -input_dir.angle()
+		rotate_assets(input_dir)
 	
-	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = input_dir.x * SPEED
-		velocity.z = input_dir.y * SPEED
+	if input_dir and !DialogService.is_in_dialog:
+		walk(input_dir)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 	
+func walk(input_dir):	
+	velocity = Vector3(input_dir.x * SPEED, velocity.y, input_dir.y * SPEED)
+
+func rotate_assets(input_dir: Vector2):
+	self.rotation.y = -input_dir.angle()
+	print("Rotating assets")
+	#Rotate the player model (Dont ask me why the input_dir has to be negated
+	#interact_controller.rotation.y = input_dir.
+	#player_model.rotation.y = input_dir.angle()
+#	rotation.y = -input_dir.angle()
+
 # Adjust's the input direction so we know where the player wants to go
+# Outputs it on an xz plane
 func get_input_direction() -> Vector2:
-	var input_dir: Vector2 = 	Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var camera: Node3D = CameraService.get_camera_base()
 	if camera:
 		# Now consider the camera rotation with how to process the analog input
-		input_dir = input_dir.rotated(-camera.rotation.y).normalized()
+		# *touches earth: "Linear algebra was here..."
+		input_dir = input_dir.rotated(-camera.rotation.y)
 	return input_dir
 	
 func process_jump(delta: float):
 
 	# If player holds jump, they can jump a little higher!
-	if Input.is_action_just_pressed("jump") && has_ground_been_touched:
+	if Input.is_action_just_pressed("jump") && has_ground_been_touched && !DialogService.is_in_dialog:
 		jump_hold_time = jump_hold_time_limit
 		has_ground_been_touched = false
 	else:

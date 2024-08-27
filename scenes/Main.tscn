@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/App.gd" id="1_otvg2"]
 [ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
 [ext_resource type="PackedScene" uid="uid://dlgiswtfb25sp" path="res://models/ground.blend" id="3_2446t"]
-[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/InteractableEntity.tscn" id="5_1ooi7"]
+[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/Npc.tscn" id="5_1ooi7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to0ia"]
@@ -27,7 +27,7 @@ shape = SubResource("BoxShape3D_to0ia")
 [node name="ground" parent="StaticBody3D" instance=ExtResource("3_2446t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.182367)
 
-[node name="interactable_static_body" parent="." instance=ExtResource("5_1ooi7")]
+[node name="Npc1" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, -0.0163357, 3.15326)
 dialog = "Dude, what's up?"
 
@@ -43,7 +43,7 @@ dialog = "Dude, why are you asking all of us questions?"
 script = ExtResource("5_wlube")
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase"]
-transform = Transform3D(1, 0, 0, 0, 0.928466, 0.371416, 0, -0.371416, 0.928466, 0, 1.23138, 4.12584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.566678, 2.72216)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gj6ua")

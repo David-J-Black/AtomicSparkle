@@ -23,6 +23,9 @@ func _on_ok_button_pressed():
 		dialog_element.text = "Howdy partner"
 	self.visible = false
 
+func _exit_tree():
+	if DialogService.dialogs.get_child_count() <= 1:
+		DialogService.is_in_dialog = false
 
 func _on_close_button_pressed():
 	close()

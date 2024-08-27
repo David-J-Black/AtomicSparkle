@@ -13,6 +13,9 @@ func set_player(player: CharacterBody3D) -> void:
 	_player = player
 
 func _process(delta):
+	move_camera_to_player()
+	
+func move_camera_to_player():
 	if _active_camera_base and _player:
 		_active_camera_base.position = _player.position
 	else:
