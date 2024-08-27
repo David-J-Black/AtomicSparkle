@@ -21,3 +21,6 @@ script = ExtResource("3_0wmgw")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 root_node = NodePath("../blenderNode")
+
+[node name="DialogNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76606, 0)

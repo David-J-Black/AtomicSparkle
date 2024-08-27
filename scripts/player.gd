@@ -61,11 +61,6 @@ func walk(input_dir):
 
 func rotate_assets(input_dir: Vector2):
 	self.rotation.y = -input_dir.angle()
-	print("Rotating assets")
-	#Rotate the player model (Dont ask me why the input_dir has to be negated
-	#interact_controller.rotation.y = input_dir.
-	#player_model.rotation.y = input_dir.angle()
-#	rotation.y = -input_dir.angle()
 
 # Adjust's the input direction so we know where the player wants to go
 # Outputs it on an xz plane

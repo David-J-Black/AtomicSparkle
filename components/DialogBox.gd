@@ -1,6 +1,11 @@
 extends Control
 class_name DialogBox
 
+@onready var color_rect: ColorRect = $ColorRect
+
+func get_dimensions() -> Vector4:
+	return Vector4(color_rect.position.x, color_rect.position.y, color_rect.size.x, color_rect.size.y)
+
 func add_text(message: String):
 	self.visible = true
 	var dialog_element = $ColorRect/VBoxContainer/TextBackground/DialogElement

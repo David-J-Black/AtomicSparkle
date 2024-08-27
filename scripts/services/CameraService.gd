@@ -20,3 +20,14 @@ func move_camera_to_player():
 		_active_camera_base.position = _player.position
 	else:
 		print("WHERE IS PLAYER OR CAMERA", _active_camera_base, _player)
+
+func unproject_position(position: Vector3) -> Vector2:
+	
+	if !position:
+		return Vector2.ZERO
+
+	for child in _active_camera_base.get_children():
+		if child is Camera3D:
+			return child.unproject_position(position)
+	
+	return Vector2.ZERO
