@@ -1,16 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://dd7vr74jyu88o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ouy1s"]
+[ext_resource type="PackedScene" uid="uid://lid8ckiv8gme" path="res://models/little.guy.blend" id="2_2pcel"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_f4es8"]
-radius = 0.6
-
-[sub_resource type="BoxMesh" id="BoxMesh_xci2u"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_53lwv"]
+radius = 0.3
+height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aq3ai"]
 radius = 0.75
 
 [sub_resource type="SphereMesh" id="SphereMesh_2l7gh"]
+radius = 0.75
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752285, 0)
@@ -19,11 +20,11 @@ script = ExtResource("1_ouy1s")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173021, 0)
-shape = SubResource("SphereShape3D_f4es8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.152385, 0)
+shape = SubResource("CapsuleShape3D_53lwv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_xci2u")
+[node name="little_guy" parent="." instance=ExtResource("2_2pcel")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.756243, 0)
 
 [node name="InteractPivot" type="Node3D" parent="."]
 

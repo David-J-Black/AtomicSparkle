@@ -3,6 +3,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="library" name="GdSdk 4.2.2" level="project" />
+    <orderEntry type="library" name="GdSdk Master" level="project" />
   </component>
 </module>
