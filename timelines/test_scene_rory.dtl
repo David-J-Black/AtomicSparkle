@@ -1,0 +1,23 @@
+join rory 1 [animation="Bounce In"]
+rory (happy): Oh hey <YOUR NAME HERE>, What's up?
+label menu_loop (Uh...)
+update rory (shy) 1
+- How's the weather
+	rory (erupting): Dude, you're better than that...
+- Did you catch the game?
+	rory (concerned): What game? Dude,
+	rory (screaming): What game? Dude,did you catch the stream? Johnny Box delivered the killer blow in ricky pasticky's side during the Porglingus game
+- Hey, you look kinda bummed? [if {has_key} == false][else="hide"]
+	rory (talking): Uh... well,
+	rory (concerned): I am kinda bummed, because I lost my house key and my parents are out of town and I live alone and am royally FUCKED!
+	set {knows_about_key} = true
+- Look what I found. [if {has_key} == true][else="hide"]
+	rory (screaming): Oh my god dude!
+	rory (happy): You saved my sweet toasty buns! Let's head to school!
+	(Bell ring sound, end scene)
+	[end_timeline]
+- Leave
+	jump end
+jump menu_loop
+label end
+[end_timeline]

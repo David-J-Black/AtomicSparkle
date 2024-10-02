@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://gvvvvwllsk7w"]
+
+[ext_resource type="Theme" uid="uid://7jb70ivemlvo" path="res://themes/main_menu.tres" id="1_8shle"]
+[ext_resource type="Script" path="res://scenes/menus/SaveMenu.gd" id="1_rw0y4"]
+[ext_resource type="Theme" uid="uid://brdaudhtab7uw" path="res://themes/text_list.tres" id="3_k8eri"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8shle")
+script = ExtResource("1_rw0y4")
+
+[node name="SaveMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SaveMenu"]
+layout_mode = 2
+text = "Save
+"
+
+[node name="PanelContainer" type="PanelContainer" parent="SaveMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.52
+theme = ExtResource("3_k8eri")
+
+[node name="MarginContainer" type="MarginContainer" parent="SaveMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="SaveList" type="VBoxContainer" parent="SaveMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="SaveMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="New" type="Button" parent="SaveMenu/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "New"
+
+[node name="Load" type="Button" parent="SaveMenu/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="Save" type="Button" parent="SaveMenu/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="Delete" type="Button" parent="SaveMenu/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Delete
+"
+
+[node name="NameWindow" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NameWindow"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NameWindow/VBoxContainer"]
+layout_mode = 2
+text = "Save File Name"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NameWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="NameWindow/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+placeholder_text = "Stinky Winky"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NameWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="Cancel" type="Button" parent="NameWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Save" type="Button" parent="NameWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[connection signal="pressed" from="SaveMenu/Buttons/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="SaveMenu/Buttons/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="SaveMenu/Buttons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="NameWindow/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_name_menu_cancel_pressed"]
+[connection signal="pressed" from="NameWindow/VBoxContainer/HBoxContainer/Save" to="." method="_on_name_menu_save_pressed"]

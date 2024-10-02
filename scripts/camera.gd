@@ -19,14 +19,16 @@ func _ready():
 	pass # Replace with function body.
 	
 func _input(event: InputEvent):
+	pass
+	# Going to keep the camera static for a second
 
-	if event is InputEventMouseMotion and Input.is_action_pressed('mouse_click'):
-				print("Mouse Clicked")
-				rotation_degrees.x -= event.relative.y * mouse_sensitivity
-				rotation_degrees.x = clamp(rotation_degrees.x, -80, 80)
-
-				rotation_degrees.y -= event.relative.x * mouse_sensitivity
-				rotation_degrees.y = wrapf(rotation_degrees.y, 0, 360)
+	#if event is InputEventMouseMotion and Input.is_action_pressed('mouse_click'):
+				#print("Mouse Clicked")
+				#rotation_degrees.x -= event.relative.y * mouse_sensitivity
+				#rotation_degrees.x = clamp(rotation_degrees.x, -80, 80)
+#
+				#rotation_degrees.y -= event.relative.x * mouse_sensitivity
+				#rotation_degrees.y = wrapf(rotation_degrees.y, 0, 360)
 
 
 func _process(delta):

@@ -48,7 +48,7 @@ func _physics_process(delta):
 	if input_dir.length() > 0:
 		rotate_assets(input_dir)
 	
-	if input_dir and !DialogService.is_in_dialog:
+	if input_dir and !DialogService.is_in_dialog():
 		walk(input_dir)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -76,7 +76,7 @@ func get_input_direction() -> Vector2:
 func process_jump(delta: float):
 
 	# If player holds jump, they can jump a little higher!
-	if Input.is_action_just_pressed("jump") && has_ground_been_touched && !DialogService.is_in_dialog:
+	if Input.is_action_just_pressed("jump") && has_ground_been_touched && !DialogService.is_in_dialog():
 		jump_hold_time = jump_hold_time_limit
 		has_ground_been_touched = false
 	else:

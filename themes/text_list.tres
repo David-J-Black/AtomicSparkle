@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://brdaudhtab7uw"]
+
+[ext_resource type="StyleBox" uid="uid://cym7abnficpq" path="res://themes/stylbox_selected.tres" id="1_64wak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nqlv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2ut"]
+bg_color = Color(0.830335, 0.830335, 0.830335, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/focus = ExtResource("1_64wak")
+Button/styles/normal = SubResource("StyleBoxFlat_5nqlv")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_8p2ut")

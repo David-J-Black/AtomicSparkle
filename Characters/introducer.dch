@@ -1,0 +1,84 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "talking",
+"description": "The default character model person g uy",
+"display_name": "Introducer",
+"mirror": false,
+"nicknames": ["(That guy)"],
+"offset": Vector2(0, 0),
+"portraits": {
+"blushing": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/blushing.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.7,
+"scene": ""
+},
+"concerned": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/concerned.png\""
+},
+"mirror": false,
+"offset": Vector2(-19, 90),
+"scale": 0.8,
+"scene": ""
+},
+"erupting": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/erupting.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 100),
+"scale": 1.0,
+"scene": ""
+},
+"happy": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 100),
+"scale": 0.9,
+"scene": ""
+},
+"screaming": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/screaming.png\""
+},
+"mirror": false,
+"offset": Vector2(10, 0),
+"scale": 0.9,
+"scene": ""
+},
+"shy": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/shy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 100),
+"scale": 1.0,
+"scene": ""
+},
+"talking": {
+"export_overrides": {
+"image": "\"res://images/characters/introducer/talking.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(-10, 20),
+"scale": 0.7,
+"scene": ""
+}
+},
+"scale": 1.0
+}

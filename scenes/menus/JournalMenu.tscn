@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd0tw6r16io52"]
+
+[ext_resource type="Theme" uid="uid://7jb70ivemlvo" path="res://themes/main_menu.tres" id="1_8a3wr"]
+[ext_resource type="Script" path="res://scenes/menus/JournalMenu.gd" id="2_7wgqc"]
+
+[node name="JournalMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8a3wr")
+script = ExtResource("2_7wgqc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Journal"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2

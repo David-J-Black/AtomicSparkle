@@ -1,0 +1,20 @@
+join tk 3 [animation="Slide In Left"]
+tk (happy): Bro wassup
+update tk (talking)
+label main
+- What's up?
+	tk (screaming): Bro I saw bigfoot last night, and it made me really scared
+- Any updates on that big swirly rock you found?
+	tk (shy): Yeah! It hatched! Like an EGG! It's empty... but I don't know where the baby went
+- Why are you acting all twitchy? [if {has_key} == false][else="hide"]
+	tk (concerned): Dude, I was walking to school and I found a key! It looks like it belonged to a schmuck, do you think it can open anything? Or is it a fake key that grew off a tree? I don't feel comfortable having this much power
+	if {has_key} == false:
+		TK Hands you a house key
+		set {has_key} = true
+- Leave
+	jump end
+jump main
+label end
+tk (happy): See ya!
+[end_timeline]
+[style]

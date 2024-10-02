@@ -1,0 +1,30 @@
+[wait time="1.0"]
+join  1
+You enter the small abode, and are greeted by a tiny dog in a hoodie
+She start's trembling
+Uh... umm...
+label first_choice
+- Start petting her
+	jump pet_loop
+- Compliment her sick coat
+	...
+	Although she doesn't appear to have any opinions on fashion, her dark wet eyes plead for you to pet her
+	jump first_choice
+- This is too weird, I'm outta here
+	jump end
+label pet_loop
+...
+You feel deep empty eyes stare at you as you stroke the cow spotted creature
+- Stop petting her
+	HNNNNN-
+	She emits the most pathetic noise you've had the displeasure of being present for
+	- Sorry! (Keep Petting her)
+		jump pet_loop
+	- This is too weird (Leave)
+		jump end
+- Keep petting her
+	jump pet_loop
+label end
+leave 
+do MapService.load_map("bellingham_pt_1")
+[end_timeline]

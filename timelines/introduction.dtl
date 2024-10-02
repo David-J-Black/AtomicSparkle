@@ -1,0 +1,4 @@
+join introducer 1
+introducer: Hello! Welcome to the game! You are heading to the map
+introducer (screaming): WATCH OUT!
+do MapService.load_map("neighborhood_pt_1")

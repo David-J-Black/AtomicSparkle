@@ -1,0 +1,20 @@
+[background arg="res://images/dumpster_scene.png" fade="0.0"]
+*Rustle Rustle
+As disgusting as this alley is, the scent of discarded day old Phad Thai fills your soul with hope
+join Scrangus 1
+*RUSTLE* *RUSTLE*
+Scrangus: Dude! For real?? Egg rolls?! How could anyone throw this out?
+Scrangus: ..!
+Scrangus: Uh--
+- ...What'cha up to?
+	Scrangus: ...
+	Scrangus: ... I'm eating Thai Food
+	- Out of a dumpster?
+		Scrangus: I mean... they sure as shit aren't going to eat it. Hell, maybe I'm not going to eat it! I know plenty of animals and folk who would love some...
+		They take a peek into the styrofoam clamshell of a meal they are holding
+		Scrangus: Pork phad see... wait no that's chicken
+	- Do you... would you like, if I got you a burger?
+- (Leave rapidly without saying anything)
+	Scrangus: ?... Shit I hope I didn't know them lol
+label end
+do MapService.load_map("moscow_pt_1.tscn")

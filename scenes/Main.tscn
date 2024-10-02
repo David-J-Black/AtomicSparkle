@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
 
-[ext_resource type="Script" path="res://scripts/App.gd" id="1_otvg2"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
 [ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
 [ext_resource type="PackedScene" uid="uid://dlgiswtfb25sp" path="res://models/ground.blend" id="3_2446t"]
 [ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/Npc.tscn" id="5_1ooi7"]
@@ -29,21 +29,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.1823
 
 [node name="Npc1" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, -0.0163357, 3.15326)
-dialog = "Dude, what's up?"
+timeline_name = "test_scene_rory"
 
 [node name="interactable_static_body2" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, -0.0163357, -3.2432)
-dialog = "Hey bro, are you ok?"
+timeline_name = "calendula_pt_1"
 
 [node name="interactable_static_body3" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, -0.0163357, 3.73018)
-dialog = "Dude, why are you asking all of us questions?"
+timeline_name = "tk_pt_1"
 
 [node name="CameraBase" type="Node3D" parent="."]
 script = ExtResource("5_wlube")
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.566678, 2.72216)
+transform = Transform3D(1, 0, 0, 0, 0.815956, 0.578114, 0, -0.578114, 0.815956, 0, 2.27333, 2.72216)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gj6ua")
@@ -54,3 +54,7 @@ light_color = Color(1, 0.941176, 0.87451, 1)
 light_indirect_energy = 5.393
 shadow_enabled = true
 shadow_opacity = 0.83
+
+[node name="DialogAnchor" type="Node2D" parent="."]
+
+[node name="MenuCanvas" type="CanvasLayer" parent="."]

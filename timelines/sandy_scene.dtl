@@ -1,0 +1,5 @@
+[background arg="res://DialogicAssets/Images/you_know_what.png" fade="0.0"]
+join Sandy 1
+Sandy: Oh jesus christ can you PLEASE come back later!!
+Sandy: Like, RIGHT NOW? Why does it have to be RIGHT NOW!!
+do MapService.load_map("bellingham_pt_1")

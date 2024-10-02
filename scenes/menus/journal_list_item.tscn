@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://rqivbbey65n3"]
+
+[ext_resource type="Script" path="res://scenes/menus/journal_list_item.gd" id="1_0vt8f"]
+[ext_resource type="Theme" uid="uid://7jb70ivemlvo" path="res://themes/main_menu.tres" id="1_tq5pj"]
+
+[sub_resource type="Theme" id="Theme_r35ie"]
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+
+[sub_resource type="Theme" id="Theme_kpeb3"]
+Label/font_sizes/font_size = 24
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+
+[sub_resource type="Theme" id="Theme_r3yod"]
+
+[node name="JournalListItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tq5pj")
+script = ExtResource("1_0vt8f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 100.0
+
+[node name="QuestTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Title of Quest"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_r35ie")
+
+[node name="QuestDescription" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Overall Objective Of Quest"
+
+[node name="ObjectiveList" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kpeb3")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ObjectiveList"]
+layout_mode = 2
+
+[node name="ObjectiveDescription" type="Label" parent="VBoxContainer/ObjectiveList/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_r3yod")
+text = "Objective Entry"
