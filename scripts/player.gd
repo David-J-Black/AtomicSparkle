@@ -1,8 +1,10 @@
 extends CharacterBody3D
+class_name Player
 
 var InteractableEntity: PackedScene = preload("res://scenes/Npc.tscn")
 
 const SPEED = 5.0
+const ROTATIONAL_SPEED = 0.1
 @export var jump_velocity = 5
 
 @onready var interact_controller: Node3D = $InteractPivot
@@ -60,13 +62,16 @@ func walk(input_dir):
 	velocity = Vector3(input_dir.x * SPEED, velocity.y, input_dir.y * SPEED)
 
 func rotate_assets(input_dir: Vector2):
-	self.rotation.y = -input_dir.angle()
+	var current_angle: float = self.rotation.y
+	var desired_angle: float = -input_dir.angle()
+	self.rotation.y = lerp_angle(current_angle, desired_angle, ROTATIONAL_SPEED)
+
 
 # Adjust's the input direction so we know where the player wants to go
 # Outputs it on an xz plane
 func get_input_direction() -> Vector2:
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var camera: Node3D = CameraService.get_camera_base()
+	var camera: Node3D = CameraService.camera_base
 	if camera:
 		# Now consider the camera rotation with how to process the analog input
 		# *touches earth: "Linear algebra was here..."

@@ -1,11 +1,13 @@
 extends Node3D
 
+@onready var level_anchor: Node3D = $LevelAnchor
+@onready var player: CharacterBody3D = $Player
+@onready var camera_base: Node3D = $CameraBase
+
 func _init():
 	print("Hello, this should be the start of the program")
 
 func _ready():
 	# Open a menu
-	var camera_base: Node3D = $CameraBase
-	var player: CharacterBody3D = $Player
-	CameraService.set_camera_base(camera_base)
-	CameraService.set_player(player)
+	CameraService.setup(camera_base)
+	LevelService.setup(level_anchor)

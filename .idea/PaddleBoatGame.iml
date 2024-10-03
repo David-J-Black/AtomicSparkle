@@ -4,5 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="library" name="GdSdk Master" level="project" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="GdSdk Master" level="project" />
   </component>
 </module>

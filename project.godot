@@ -17,13 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DialogService="*res://scripts/services/dialog_service.gd"
 QuestSystem="*res://addons/quest-system-1.5.0/addons/quest_system/quest_manager.gd"
-DialogService="*res://scripts/services/DialogService.gd"
-CameraService="*res://scripts/services/CameraService.gd"
-GameService="*res://scripts/services/GameService.gd"
-MenuService="*res://scripts/services/MenuService.gd"
-QuestService="*res://scripts/services/QuestService.gd"
-SaveService="*res://scripts/services/SaveService.gd"
+CameraService="*res://scripts/services/camera_service.gd"
+GameService="*res://scripts/services/game_service.gd"
+MenuService="*res://scripts/services/menu_service.gd"
+LevelService="*res://scripts/services/level_service.gd"
+SaveService="*res://scripts/services/save_service.gd"
+QuestService="*res://scripts/services/quest_service.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

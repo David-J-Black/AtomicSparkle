@@ -12,7 +12,7 @@ radius = 0.25
 script = ExtResource("1_o02xe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.513, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161692, 0.513, 2.08165e-12)
 shape = SubResource("CylinderShape3D_xuf8v")
 
 [node name="blenderNode" parent="." instance=ExtResource("2_hbsay")]

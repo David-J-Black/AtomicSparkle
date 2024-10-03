@@ -1,13 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=5 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
-[ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://scenes/player.tscn" id="2_60b6d"]
-[ext_resource type="PackedScene" uid="uid://dlgiswtfb25sp" path="res://models/ground.blend" id="3_2446t"]
 [ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/Npc.tscn" id="5_1ooi7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_to0ia"]
-size = Vector3(10, 0.16, 10)
 
 [sub_resource type="Environment" id="Environment_gj6ua"]
 background_mode = 2
@@ -16,26 +11,17 @@ ambient_light_color = Color(0.462745, 0.00392157, 0.913725, 1)
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
 
-[node name="Player" parent="." instance=ExtResource("2_60b6d")]
+[node name="LevelAnchor" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13985, -0.110799, 0.00188637)
-shape = SubResource("BoxShape3D_to0ia")
-
-[node name="ground" parent="StaticBody3D" instance=ExtResource("3_2446t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95289, 1.19209e-07, -0.182367)
-
-[node name="Npc1" parent="." instance=ExtResource("5_1ooi7")]
+[node name="NPC_RORY" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, -0.0163357, 3.15326)
 timeline_name = "test_scene_rory"
 
-[node name="interactable_static_body2" parent="." instance=ExtResource("5_1ooi7")]
+[node name="NPC_Calendula" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, -0.0163357, -3.2432)
 timeline_name = "calendula_pt_1"
 
-[node name="interactable_static_body3" parent="." instance=ExtResource("5_1ooi7")]
+[node name="NPC_TK" parent="." instance=ExtResource("5_1ooi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, -0.0163357, 3.73018)
 timeline_name = "tk_pt_1"
 
