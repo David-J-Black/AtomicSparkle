@@ -1,45 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=3 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
-[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/Npc.tscn" id="5_1ooi7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
-
-[sub_resource type="Environment" id="Environment_gj6ua"]
-background_mode = 2
-ambient_light_color = Color(0.462745, 0.00392157, 0.913725, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
 
 [node name="LevelAnchor" type="Node3D" parent="."]
 
-[node name="NPC_RORY" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15019, -0.0163357, 3.15326)
-timeline_name = "test_scene_rory"
-
-[node name="NPC_Calendula" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6624, -0.0163357, -3.2432)
-timeline_name = "calendula_pt_1"
-
-[node name="NPC_TK" parent="." instance=ExtResource("5_1ooi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57342, -0.0163357, 3.73018)
-timeline_name = "tk_pt_1"
-
 [node name="CameraBase" type="Node3D" parent="."]
+transform = Transform3D(1, 0.000629726, -0.000248987, -0.000629744, 1, -6.90102e-05, 0.000248943, 6.91715e-05, 1, 0, 0, 0)
 script = ExtResource("5_wlube")
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase"]
 transform = Transform3D(1, 0, 0, 0, 0.815956, 0.578114, 0, -0.578114, 0.815956, 0, 2.27333, 2.72216)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gj6ua")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, -0.587983, 0.808873, 0, -0.808873, -0.587983, 0, 0.37031, -0.46873)
-light_color = Color(1, 0.941176, 0.87451, 1)
-light_indirect_energy = 5.393
-shadow_enabled = true
-shadow_opacity = 0.83
 
 [node name="DialogAnchor" type="Node2D" parent="."]
 
