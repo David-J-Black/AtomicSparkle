@@ -48,7 +48,7 @@ func _physics_process(delta):
 	var input_dir: Vector2 = get_input_direction()
 
 	if input_dir.length() > 0:
-		rotate_assets(input_dir)
+		rotate_player(input_dir)
 	
 	if input_dir and !DialogService.is_in_dialog():
 		walk(input_dir)
@@ -61,7 +61,9 @@ func _physics_process(delta):
 func walk(input_dir):	
 	velocity = Vector3(input_dir.x * SPEED, velocity.y, input_dir.y * SPEED)
 
-func rotate_assets(input_dir: Vector2):
+## Rotate's the player in the given direction
+## to be used within the _processing() function
+func rotate_player(input_dir: Vector2):
 	var current_angle: float = self.rotation.y
 	var desired_angle: float = -input_dir.angle()
 	self.rotation.y = lerp_angle(current_angle, desired_angle, ROTATIONAL_SPEED)
