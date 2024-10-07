@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=6 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
+[ext_resource type="Texture2D" uid="uid://b40nichdt7oty" path="res://models/gridmap/white.png" id="3_8blvo"]
+[ext_resource type="Shader" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
+shader = ExtResource("3_fcd7d")
+shader_parameter/size_x = 0.004
+shader_parameter/size_y = 0.004
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
@@ -14,6 +21,15 @@ script = ExtResource("5_wlube")
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase"]
 transform = Transform3D(1, 0, 0, 0, 0.815956, 0.578114, 0, -0.578114, 0.815956, 0, 2.27333, 2.72216)
+
+[node name="PixelizeShader" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_27lwr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8blvo")
 
 [node name="DialogAnchor" type="Node2D" parent="."]
 

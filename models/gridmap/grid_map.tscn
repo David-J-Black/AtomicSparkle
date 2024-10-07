@@ -10,7 +10,7 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbm45"]
 size = Vector3(2.5, 0.1, 2.04056)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jvp4e"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwrcv"]
 size = Vector3(2, 1.5, 0.1)
 
 [node name="Scene" instance=ExtResource("1_wfyy4")]
@@ -127,7 +127,7 @@ shape = SubResource("BoxShape3D_7jkrp")
 
 [node name="chain_link_collision_box" type="CollisionShape3D" parent="metal_fence/StaticBody3D" index="0"]
 transform = Transform3D(1, 2.64377e-14, 0, -2.64377e-14, 1, -8.15384e-21, -2.15569e-34, 8.15384e-21, 1, 0, -0.25, 0)
-shape = SubResource("BoxShape3D_jvp4e")
+shape = SubResource("BoxShape3D_rwrcv")
 
 [node name="metal_fence-tall" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
