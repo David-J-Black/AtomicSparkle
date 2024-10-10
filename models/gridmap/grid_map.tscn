@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2vuul5t4p0ep"]
+[gd_scene load_steps=8 format=3 uid="uid://d2vuul5t4p0ep"]
 
 [ext_resource type="PackedScene" uid="uid://b6jrx30kn08dr" path="res://models/gridmap/demo_grid_library.blend" id="1_wfyy4"]
 [ext_resource type="Shape3D" uid="uid://d4igarb4bjo5v" path="res://models/gridmap/collision_shapes/floor_shape.tres" id="2_s7200"]
@@ -12,6 +12,8 @@ size = Vector3(2.5, 0.1, 2.04056)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwrcv"]
 size = Vector3(2, 1.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqy5y"]
 
 [node name="Scene" instance=ExtResource("1_wfyy4")]
 
@@ -137,3 +139,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 [node name="chain_link_collision_box" type="CollisionShape3D" parent="metal_fence-tall/StaticBody3D" index="0"]
 transform = Transform3D(1, 2.64377e-14, 0, -2.64377e-14, 1, -8.15384e-21, -2.15569e-34, 8.15384e-21, 1, 0, 0.5, 0)
 shape = ExtResource("3_2jefg")
+
+[node name="grass-2x1-slope" parent="." index="15"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, -2, 7)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grass-2x1-slope" index="0"]
+
+[node name="chain_link_collision_box" type="CollisionShape3D" parent="grass-2x1-slope/StaticBody3D" index="0"]
+transform = Transform3D(1, 3.94687e-08, -9.4166e-09, -3.94687e-08, 0.892287, -0.451469, -9.41662e-09, 0.451469, 0.892287, 0, 2.43205, -1.11284)
+shape = SubResource("BoxShape3D_tqy5y")

@@ -20,8 +20,7 @@ func _ready() -> void:
 	get_viewport().connect("size_changed", Callable(self, "_resize"))
 
 func _resize() -> void:
-	var viewport_size = get_viewport().get_size()
-	print("Viewport size ", viewport_size)
+	var viewport_size = get_viewport().get_size()	
 	panel.size = viewport_size
 	#position = (viewport_size - Vector2i(size)) / 2
 	
