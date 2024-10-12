@@ -7,6 +7,7 @@ func _ready() -> void:
 	# Connect dialogic signals to functions
 	Dialogic.timeline_ended.connect(Callable(self, "_dialog_end"))
 	Dialogic.timeline_started.connect(Callable(self, "_dialog_start"))
+	Dialogic
 	get_viewport().connect("size_changed", Callable(self, "_resize"))
 	
 # Start a dialog and specify what scene should play after dialog

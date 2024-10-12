@@ -45,6 +45,10 @@ directories/dtl_directory={
 "test_scene_rory": "res://timelines/test_scene_rory.dtl",
 "tk_pt_1": "res://timelines/tk_pt_1.dtl"
 }
+layout/style_list=["res://styles/atomic_sparkle_dialogic_style.tres"]
+layout/default_style="res://styles/atomic_sparkle_dialogic_style.tres"
+glossary/default_case_sensitive=true
+variables={}
 
 [editor_plugins]
 

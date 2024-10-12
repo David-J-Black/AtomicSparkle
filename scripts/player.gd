@@ -46,19 +46,18 @@ func _physics_process(delta):
 	else:
 		velocity.y -= gravity * delta
 
-	if not are_controls_suspended():
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var input_dir: Vector2 = get_input_direction()
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir: Vector2 = Vector2.ZERO if are_controls_suspended() else get_input_direction()
 
-		if input_dir.length() > 0:
-			rotate_player(input_dir)
-		
-		if input_dir and !DialogService.is_in_dialog():
-			walk(input_dir)
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+	if input_dir.length() > 0:
+		rotate_player(input_dir)
+
+	if input_dir and !DialogService.is_in_dialog():
+		walk(input_dir)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 	

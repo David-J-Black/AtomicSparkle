@@ -8,6 +8,7 @@ var camera_base: Node3D:
 		camera_base = value
 
 var camera: Camera3D = null
+var warned_about_missing_camera_or_player: bool = false
 
 func setup(camera_base: Node3D):
 	self.camera_base = camera_base
@@ -25,7 +26,9 @@ func move_camera_to_player():
 			camera_base.position = player.position
 		return
 	
-	printerr("Cannot move camera_base to player missing camera [%s] or player [%s]" % [camera_base, player])
+	if not warned_about_missing_camera_or_player:
+		printerr("Cannot move camera_base to player missing camera [%s] or player [%s]" % [camera_base, player])
+		warned_about_missing_camera_or_player = true
 
 func unproject_position(position: Vector3) -> Vector2:
 	
