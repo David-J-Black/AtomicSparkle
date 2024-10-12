@@ -4,7 +4,6 @@ extends Control
 @export var input_action := "ui_accept"
 
 @onready var _label: Label =  $Label
-@onready var _button: TouchScreenButton = $TouchScreenButton
 
 func _ready() -> void:
 	_label.text = button_label

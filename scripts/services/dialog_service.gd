@@ -7,6 +7,7 @@ func _ready() -> void:
 	# Connect dialogic signals to functions
 	Dialogic.timeline_ended.connect(Callable(self, "_dialog_end"))
 	Dialogic.timeline_started.connect(Callable(self, "_dialog_start"))
+	get_viewport().connect("size_changed", Callable(self, "_resize"))
 	
 # Start a dialog and specify what scene should play after dialog
 func start_dialog(dialog_name: String) -> void:
@@ -47,3 +48,8 @@ func _dialog_start() -> void:
 # Tells you if the user is currently in a dialog menu
 func is_in_dialog() -> bool:
 	return current_dialog != null
+
+# Process the size of the window
+func _resize() -> void:
+	var viewport_size = get_viewport().get_size()	
+	#position = (viewport_size - Vector2i(size)) / 2

@@ -24,8 +24,8 @@ func _ready():
 	player_model.play_animation("idle", Animation.LOOP_PINGPONG)
 
 func _input(_event: InputEvent) -> void:
-
-	if Input.is_action_just_pressed("interact"):
+	
+	if Input.is_action_just_pressed("interact") and not are_controls_suspended():
 		print("Interact pressed")
 
 		var overlapping_bodies: Array[Node3D] = interact_area.get_overlapping_bodies()
@@ -46,18 +46,19 @@ func _physics_process(delta):
 	else:
 		velocity.y -= gravity * delta
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir: Vector2 = get_input_direction()
+	if not are_controls_suspended():
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir: Vector2 = get_input_direction()
 
-	if input_dir.length() > 0:
-		rotate_player(input_dir)
-	
-	if input_dir and !DialogService.is_in_dialog():
-		walk(input_dir)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if input_dir.length() > 0:
+			rotate_player(input_dir)
+		
+		if input_dir and !DialogService.is_in_dialog():
+			walk(input_dir)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 	
@@ -83,17 +84,26 @@ func get_input_direction() -> Vector2:
 		input_dir = input_dir.rotated(-camera.rotation.y)
 	return input_dir
 	
-func process_jump(delta: float):
+func process_jump(delta: float) -> void:
 
 	# If player holds jump, they can jump a little higher!
-	if Input.is_action_just_pressed("jump") && has_ground_been_touched && !DialogService.is_in_dialog():
+	if Input.is_action_just_pressed("jump")\
+		and has_ground_been_touched\
+		and not are_controls_suspended():
+			
 		jump_hold_time = jump_hold_time_limit
 		has_ground_been_touched = false
 	else:
 		# process the time delta...
 		jump_hold_time -= delta
 		
-	if Input.is_action_pressed("jump") and jump_hold_time > 0 and has_ground_been_touched:
+	if Input.is_action_pressed("jump")\
+		and jump_hold_time > 0\
+		and has_ground_been_touched\
+		and not are_controls_suspended():
+			
 		velocity.y = jump_velocity
 	
-	
+## Checks to see if the player character should be responding to input
+func are_controls_suspended() -> bool:
+	return DialogService.is_in_dialog()

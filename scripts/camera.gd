@@ -8,10 +8,6 @@ class_name CameraBase
 
 @export var acceptable_x_range := [-80, 80]
 
-# Assign Camera Node here it might be named different in your Project
-@onready var camera = $CameraBase
-#@onready var player: CharacterBody3D = $Player
-
 var velocity: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

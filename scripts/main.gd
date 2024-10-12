@@ -1,7 +1,6 @@
 extends Node3D
 
 @onready var level_anchor: Node3D = $LevelAnchor
-@onready var player: CharacterBody3D = $Player
 @onready var camera_base: Node3D = $CameraBase
 @onready var touch_buttons: Control = $UI/TouchButtons
 
