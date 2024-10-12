@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
 [ext_resource type="Texture2D" uid="uid://b40nichdt7oty" path="res://models/gridmap/white.png" id="3_8blvo"]
 [ext_resource type="Shader" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_jipba"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
+[ext_resource type="PackedScene" uid="uid://bbfr8r4p7yfsw" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
 shader = ExtResource("3_fcd7d")
@@ -32,8 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_8blvo")
 
-[node name="DialogAnchor" type="Node2D" parent="."]
-
 [node name="MenuCanvas" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="."]
@@ -44,13 +43,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MovementJoystick" parent="UI" instance=ExtResource("5_jipba")]
+[node name="TouchButtons" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JumpButton" parent="UI/TouchButtons" instance=ExtResource("6_6i4rv")]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.85
+anchor_right = 0.85
+anchor_bottom = 0.85
+button_label = "Jump"
+input_action = "jump"
+
+[node name="MovementJoystick" parent="UI/TouchButtons" instance=ExtResource("5_jipba")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.75
-anchor_right = 0.5
-anchor_bottom = 0.75
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 0.2
+anchor_bottom = 0.8
 offset_left = -150.0
 offset_top = -150.0
 offset_right = 150.0
@@ -62,3 +78,28 @@ action_left = "move_left"
 action_right = "move_right"
 action_up = "move_forward"
 action_down = "move_backward"
+
+[node name="InteractButton" parent="UI/TouchButtons" instance=ExtResource("6_6i4rv")]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.85
+anchor_right = 0.85
+anchor_bottom = 0.85
+offset_left = -98.2
+offset_top = -274.8
+offset_right = 101.8
+offset_bottom = -74.8
+button_label = "Interact"
+input_action = "interact"
+
+[node name="ToggleButton" parent="UI/TouchButtons" instance=ExtResource("6_6i4rv")]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.15
+button_label = "Toggle"
+input_action = "toggle_touch_buttons"
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogAnchor" type="Node2D" parent="."]

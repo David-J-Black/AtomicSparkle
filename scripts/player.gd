@@ -5,12 +5,15 @@ var InteractableEntity: PackedScene = preload("res://scenes/Npc.tscn")
 
 const SPEED = 5.0
 const ROTATIONAL_SPEED = 0.1
+
 @export var jump_velocity = 5
 
-@onready var interact_controller: Node3D = $InteractPivot
 @onready var interact_area: Area3D = $InteractPivot/InteractArea
 @onready var player_model = $blenderNode
 @onready var jump_hold_time_limit: float = 0.1
+
+## Suspend controlling of the player character
+var control_is_paused := false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

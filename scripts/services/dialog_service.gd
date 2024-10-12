@@ -3,6 +3,11 @@ extends Node
 var current_dialog: CanvasLayer
 var next_timeline: String
 	
+func _ready() -> void:
+	# Connect dialogic signals to functions
+	Dialogic.timeline_ended.connect(Callable(self, "_dialog_end"))
+	Dialogic.timeline_started.connect(Callable(self, "_dialog_start"))
+	
 # Start a dialog and specify what scene should play after dialog
 func start_dialog(dialog_name: String) -> void:
 	Dialogic.paused = false
@@ -18,7 +23,8 @@ func start_dialog(dialog_name: String) -> void:
 	# Make sure our scene name is up to date
 	if dialog_name == null:
 		dialog_name = GameService.get_scene_name()
-				
+		
+
 func set_current_dialog(timeline: Variant):
 	timeline.name = "dialog"
 	timeline.layer = 1
@@ -28,9 +34,15 @@ func set_current_dialog(timeline: Variant):
 func stop_dialog() -> void:
 	print("Stopping dialog (JK THIS IS JUST A PRINT)")
 	Dialogic.end_timeline()
+	
 
 func _dialog_end() -> void:
 	print("Dialog ended")
+	GuiService.show()
+	
+func _dialog_start() -> void:
+	print("Dialog started")
+	GuiService.hide()
 	
 # Tells you if the user is currently in a dialog menu
 func is_in_dialog() -> bool:

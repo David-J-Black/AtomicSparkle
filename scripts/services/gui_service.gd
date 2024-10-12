@@ -1,15 +1,26 @@
 extends Node
 
-var virtual_joystick: VirtualJoystick
+var touch_buttons: Control
 
-func setup(virtual_joystick: VirtualJoystick) -> void:
-	assert(virtual_joystick != null, "No virtual joystick found in game!")
-	self.virtual_joystick = virtual_joystick
+func setup(touch_buttons: Control) -> void:
+	assert(touch_buttons != null, "No touch buttons found in game!")
+	self.touch_buttons = touch_buttons
 	#_resize()
 	#get_viewport().connect("size_changed", Callable(self, "_resize"))
+	
+func hide():
+	touch_buttons.visible = false
+	
+func show():
+	touch_buttons.visible = true
+	
+func _process(delta: float) -> void:
+
+	if Input.is_action_just_pressed("toggle_touch_buttons"):
+		print("Toggle button pressed")
+		touch_buttons.visible = !touch_buttons.visible
 
 #func _resize() -> void:
 	#var viewport_size = get_viewport().get_size()
 	#_virtual_joystick.size = viewport_size
-	pass
 	#position = (viewport_size - Vector2i(size)) / 2

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvglwsk1ivp5q"
 path.s3tc="res://.godot/imported/grid_map_texture.png-e0aa6d92cf31df876e395a7dedd613b7.s3tc.ctex"
+path.etc2="res://.godot/imported/grid_map_texture.png-e0aa6d92cf31df876e395a7dedd613b7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/gridmap/grid_map_texture.png"
-dest_files=["res://.godot/imported/grid_map_texture.png-e0aa6d92cf31df876e395a7dedd613b7.s3tc.ctex"]
+dest_files=["res://.godot/imported/grid_map_texture.png-e0aa6d92cf31df876e395a7dedd613b7.s3tc.ctex", "res://.godot/imported/grid_map_texture.png-e0aa6d92cf31df876e395a7dedd613b7.etc2.ctex"]
 
 [params]
 
