@@ -40,7 +40,7 @@ func stop_dialog() -> void:
 
 func _dialog_end() -> void:
 	print("Dialog ended")
-	GuiService.show()
+	GuiService._resize()
 	
 func _dialog_start() -> void:
 	print("Dialog started")

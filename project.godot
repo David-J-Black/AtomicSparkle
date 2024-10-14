@@ -31,13 +31,15 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"calendula": "res://Characters/calendula.dch",
-"introducer": "res://Characters/introducer.dch",
-"rory": "res://Characters/rory.dch",
-"tk": "res://Characters/tk.dch"
+"introducer": "res://Characters/introducer.dch"
 }
 directories/dtl_directory={
 "calendula_pt_1": "res://timelines/calendula_pt_1.dtl",
+"door_guy": "res://timelines/first_level/door_guy.dtl",
+"explaining_future_feature": "res://timelines/first_level/explaining_future_feature.dtl",
+"fence_guy": "res://timelines/first_level/fence_guy.dtl",
+"forbidden_dialog": "res://timelines/first_level/forbidden_dialog.dtl",
+"happy_guy": "res://timelines/first_level/happy_guy.dtl",
 "introduction": "res://timelines/introduction.dtl",
 "sandy_scene": "res://timelines/sandy_scene.dtl",
 "sardine_scene": "res://timelines/sardine_scene.dtl",

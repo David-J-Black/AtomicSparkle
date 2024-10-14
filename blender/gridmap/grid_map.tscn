@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2vuul5t4p0ep"]
+[gd_scene load_steps=7 format=3 uid="uid://d2vuul5t4p0ep"]
 
 [ext_resource type="PackedScene" uid="uid://b6jrx30kn08dr" path="res://blender/gridmap/demo_grid_library.blend" id="1_wfyy4"]
-[ext_resource type="Shape3D" uid="uid://d4igarb4bjo5v" path="res://blender/gridmap/collision_shapes/floor_shape.tres" id="2_s7200"]
 [ext_resource type="Shape3D" uid="uid://b5gq3vrfyewba" path="res://blender/gridmap/collision_shapes/tall_fence_shape.tres" id="3_2jefg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jkrp"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vbm45"]
-size = Vector3(2.5, 0.1, 2.04056)
+[sub_resource type="BoxShape3D" id="BoxShape3D_lx3f4"]
+size = Vector3(1, 0.931885, 0.336182)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwrcv"]
 size = Vector3(2, 1.5, 0.1)
@@ -41,9 +40,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="CollisionShape3D" type="StaticBody3D" parent="sign" index="0"]
 
-[node name="SignCollisionShape" type="CollisionShape3D" parent="sign/CollisionShape3D" index="0"]
-transform = Transform3D(0.99999, 1.06581e-14, 0, -1.06581e-14, 0.99999, -1.78814e-06, -1.90584e-20, 1.78814e-06, 0.999988, 0.212073, -0.0633017, -0.0134596)
-shape = SubResource("BoxShape3D_vbm45")
+[node name="SignCollisionShape3D" type="CollisionShape3D" parent="sign/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.571655, -0.0462646)
+shape = SubResource("BoxShape3D_lx3f4")
 
 [node name="brick_wall-front-window" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
@@ -104,9 +103,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 0)
 
 [node name="StaticFloor3D" type="StaticBody3D" parent="roof-front-window" index="0"]
 
-[node name="FloorShape3D" type="CollisionShape3D" parent="roof-front-window/StaticFloor3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15277, 0)
-shape = ExtResource("2_s7200")
+[node name="CubeShape3D" type="CollisionShape3D" parent="roof-front-window/StaticFloor3D" index="0"]
+transform = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, -1.78814e-07, -3.17638e-22, 1.78814e-07, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_7jkrp")
 
 [node name="brick_wall-door-L" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3)

@@ -61,7 +61,7 @@ script = ExtResource("19_aelgi")
 name = "atomic_sparkle_dialogic_style"
 base_scene = SubResource("PackedScene_ooave")
 base_overrides = {
-"global_font_size": "32.0"
+"global_font_size": "28.0"
 }
 layers = Array[ExtResource("18_ukp5y")]([])
 metadata/_latest_layer = -1
