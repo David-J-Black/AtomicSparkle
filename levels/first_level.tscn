@@ -941,9 +941,8 @@ timeline_name = "door_guy"
 looking_behavior = 0
 
 [node name="fence_guy" parent="Entities" instance=ExtResource("4_snoak")]
-transform = Transform3D(-0.349684, 0, -0.936868, 0, 1, 0, 0.936868, 0, -0.349684, -12.2009, -0.0163359, -15.2687)
+transform = Transform3D(0.0733075, 0, 0.99731, 0, 1, 0, -0.99731, 0, 0.0733075, -12.2009, -0.0163359, -15.2687)
 timeline_name = "fence_guy"
-looking_behavior = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Entities"]
 environment = SubResource("Environment_k10dc")

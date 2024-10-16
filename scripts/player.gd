@@ -9,7 +9,7 @@ const ROTATIONAL_SPEED = 0.1
 @export var jump_velocity = 5
 
 @onready var interact_area: Area3D = $InteractPivot/InteractArea
-@onready var player_model = $blenderNode
+@onready var player_model: CharacterModel = $blenderNode
 @onready var jump_hold_time_limit: float = 0.1
 
 ## Suspend controlling of the player character
@@ -59,10 +59,20 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	_process_walking_animation()
 	move_and_slide()
 	
 func walk(input_dir):	
 	velocity = Vector3(input_dir.x * SPEED, velocity.y, input_dir.y * SPEED)
+
+
+func _process_walking_animation() -> void:
+	if velocity.length() > 2:
+		player_model.play_animation("walk", Animation.LoopMode.LOOP_LINEAR, 0.5)
+		player_model.animation_player.speed_scale = 1.75
+	else:
+		player_model.play_animation("idle", Animation.LoopMode.LOOP_PINGPONG, 0.5)
+		player_model.animation_player.speed_scale = 1
 
 ## Rotate's the player in the given direction
 ## to be used within the _processing() function
