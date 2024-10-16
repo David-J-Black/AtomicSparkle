@@ -53,10 +53,9 @@ enum AnimationsNewText {NONE, WIGGLE}
 @export var box_color_use_global: bool = true
 @export var box_color_custom: Color = Color.BLACK
 
-# size will be based on size of the window
-#@export_subgroup("Size & Position")
-#@export var box_size: Vector2 = Vector2(550, 110)
-#@export var box_margin_bottom: int = 15
+@export_subgroup("Size & Position")
+@export var box_size: Vector2 = Vector2(550, 110)
+@export var box_margin_bottom: int = 15
 
 @export_subgroup("Animation")
 @export var box_animation_in: AnimationsIn = AnimationsIn.FADE_UP
@@ -115,6 +114,24 @@ enum AnimationsNewText {NONE, WIGGLE}
 @export_range(0.0, 10) var typing_sounds_volume_variance: float = 0.0
 @export var typing_sounds_ignore_characters: String = " .,!?"
 
+func _resize() -> void:
+	var viewport = get_viewport().size
+	var sizer: Control = %Sizer
+	var text_ratio: float = 0.035
+	
+	# Are we landscape?
+	if viewport.x > viewport.y:
+		sizer.size = Vector2(viewport.x, viewport.x/5) * 0.8
+		text_size = viewport.x * text_ratio
+	else:
+		sizer.size = Vector2(viewport.x, viewport.y/3) * 0.8
+		text_size = viewport.y * text_ratio
+		
+	_apply_text_settings()
+		
+	print("sizer size", sizer.size)
+	#sizer.size = box_size
+	sizer.position = sizer.size * Vector2(-0.5, -1)+Vector2(0, -box_margin_bottom)
 
 func _apply_export_overrides() -> void:
 	if !is_inside_tree():
@@ -160,6 +177,7 @@ func _apply_box_settings() -> void:
 
 	get_viewport().connect("size_changed", Callable(self, "_resize"))
 	_resize()
+	#var sizer: Control = %Sizer
 	#sizer.size = box_size
 	#sizer.position = box_size * Vector2(-0.5, -1)+Vector2(0, -box_margin_bottom)
 
@@ -278,8 +296,3 @@ func _apply_sounds_settings() -> void:
 	type_sounds.pitch_variance = typing_sounds_pitch_variance
 	type_sounds.volume_variance = typing_sounds_volume_variance
 	type_sounds.ignore_characters = typing_sounds_ignore_characters
-	
-func _resize() ->  void:
-	var viewport_size = get_viewport().get_size()	
-	var sizer: Control = %Sizer
-	sizer.size = viewport_size / 2
