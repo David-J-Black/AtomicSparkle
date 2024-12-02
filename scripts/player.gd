@@ -3,8 +3,8 @@ class_name Player
 
 var InteractableEntity: PackedScene = preload("res://scenes/Npc.tscn")
 
-const SPEED = 5.0
-const ROTATIONAL_SPEED = 0.1
+const SPEED: float = 5.0
+const ROTATIONAL_SPEED: float = 0.1
 
 @export var jump_velocity = 5
 
@@ -31,6 +31,7 @@ func _input(_event: InputEvent) -> void:
 		var overlapping_bodies: Array[Node3D] = interact_area.get_overlapping_bodies()
 
 		for body in overlapping_bodies:
+			# TODO: Does the below if statement even do anything?
 			if body.name != "Player":
 				print("Interacting with ", body.name)
 

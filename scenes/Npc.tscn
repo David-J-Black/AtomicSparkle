@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccncqt75nhkug"]
 
-[ext_resource type="Script" path="res://scenes/Npc.gd" id="1_o02xe"]
+[ext_resource type="Script" uid="uid://d32nh7y6pkuhw" path="res://scenes/Npc.gd" id="1_o02xe"]
 [ext_resource type="PackedScene" uid="uid://lid8ckiv8gme" path="res://models/little.guy.blend" id="2_hbsay"]
-[ext_resource type="Script" path="res://models/little.guy.gd" id="3_0wmgw"]
+[ext_resource type="Script" uid="uid://c8odsgwdxw4yo" path="res://models/little.guy.gd" id="3_0wmgw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xuf8v"]
 height = 1.0

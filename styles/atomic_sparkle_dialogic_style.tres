@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="9_wrrkt"]
 [ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="13_n8alt"]
 [ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="15_hac21"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="18_ukp5y"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="19_aelgi"]
+[ext_resource type="Script" uid="uid://o1ubeyhpxoaf" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="18_ukp5y"]
+[ext_resource type="Script" uid="uid://db123dl081bor" path="res://addons/dialogic/Resources/dialogic_style.gd" id="19_aelgi"]
 
 [sub_resource type="Resource" id="Resource_o2ro1"]
 script = ExtResource("18_ukp5y")

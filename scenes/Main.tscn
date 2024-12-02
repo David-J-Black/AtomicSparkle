@@ -1,16 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_otvg2"]
-[ext_resource type="Shader" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
+[ext_resource type="Script" uid="uid://c302xnnnnl3lt" path="res://scripts/main.gd" id="1_otvg2"]
+[ext_resource type="Shader" uid="uid://bnsw6ijnocvj1" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
 [ext_resource type="Texture2D" uid="uid://da0npfcjgbs2n" path="res://blender/gridmap/materials/white.png" id="4_sajiy"]
 [ext_resource type="PackedScene" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_jipba"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="5_wlube"]
+[ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://scripts/camera.gd" id="5_wlube"]
 [ext_resource type="PackedScene" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
 shader = ExtResource("3_fcd7d")
-shader_parameter/size_x = 0.004
-shader_parameter/size_y = 0.004
+shader_parameter/size_x = 0.002
+shader_parameter/size_y = 0.002
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
@@ -105,3 +105,13 @@ input_action = "toggle_touch_buttons"
 metadata/_edit_use_anchors_ = true
 
 [node name="DialogAnchor" type="Node2D" parent="."]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"

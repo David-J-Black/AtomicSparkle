@@ -403,4 +403,3 @@ func _on_event_default_value_changed(prop:String, value:Vector2) -> void:
 
 func _on_event_default_bool_toggled(value:bool, prop:String) -> void:
 	set_event_default_override(prop, value)
-

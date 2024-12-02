@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd0tw6r16io52"]
 
 [ext_resource type="Theme" uid="uid://7jb70ivemlvo" path="res://themes/main_menu.tres" id="1_8a3wr"]
-[ext_resource type="Script" path="res://scenes/menus/JournalMenu.gd" id="2_7wgqc"]
+[ext_resource type="Script" uid="uid://bjpxbvufbyjiy" path="res://scenes/menus/JournalMenu.gd" id="2_7wgqc"]
 
 [node name="JournalMenu" type="Control"]
 layout_mode = 3

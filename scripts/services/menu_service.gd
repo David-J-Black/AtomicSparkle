@@ -47,7 +47,7 @@ func make_confirm_menu(text: String) -> bool:
 	
 	return confirm_response
 	
-# Confirm menu logid:
+# Confirm menu logic:
 # Confirm menu will call one of these two functions
 func _on_confirm():
 	confirm_response = true
