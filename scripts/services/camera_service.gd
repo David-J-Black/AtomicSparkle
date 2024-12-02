@@ -8,6 +8,12 @@ var camera_base: Node3D:
 		camera_base = value
 
 var camera: Camera3D = null
+var xr_origin: XROrigin3D:
+	set(value):
+		if(value != null):
+			self.add_child(xr_origin)
+		xr_origin = value
+	
 var warned_about_missing_camera_or_player: bool = false
 
 func setup(camera_base: Node3D):

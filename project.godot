@@ -28,18 +28,33 @@ GuiService="*res://scripts/services/gui_service.gd"
 QuestService="*res://scripts/services/quest_service.gd"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
+DK="*res://addons/xr_debug_console/debug_konsole.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
 directories/dch_directory={
+"Characters/introducer": "res://android/build/build/intermediates/assets/standardDebug/Characters/introducer.dch",
+"assets/Characters/introducer": "res://android/build/assets/Characters/introducer.dch",
 "introducer": "res://Characters/introducer.dch"
 }
 directories/dtl_directory={
+"assets/timelines/calendula_pt_1": "res://android/build/assets/timelines/calendula_pt_1.dtl",
+"assets/timelines/introduction": "res://android/build/assets/timelines/introduction.dtl",
+"assets/timelines/sandy_scene": "res://android/build/assets/timelines/sandy_scene.dtl",
+"assets/timelines/sardine_scene": "res://android/build/assets/timelines/sardine_scene.dtl",
+"assets/timelines/scrangus_alley": "res://android/build/assets/timelines/scrangus_alley.dtl",
+"assets/timelines/test_scene_rory": "res://android/build/assets/timelines/test_scene_rory.dtl",
+"assets/timelines/tk_pt_1": "res://android/build/assets/timelines/tk_pt_1.dtl",
 "calendula_pt_1": "res://timelines/calendula_pt_1.dtl",
 "door_guy": "res://timelines/first_level/door_guy.dtl",
 "explaining_future_feature": "res://timelines/first_level/explaining_future_feature.dtl",
 "fence_guy": "res://timelines/first_level/fence_guy.dtl",
+"first_level/door_guy": "res://android/build/build/intermediates/assets/standardDebug/timelines/first_level/door_guy.dtl",
+"first_level/explaining_future_feature": "res://android/build/build/intermediates/assets/standardDebug/timelines/first_level/explaining_future_feature.dtl",
+"first_level/fence_guy": "res://android/build/build/intermediates/assets/standardDebug/timelines/first_level/fence_guy.dtl",
+"first_level/forbidden_dialog": "res://android/build/build/intermediates/assets/standardDebug/timelines/first_level/forbidden_dialog.dtl",
+"first_level/happy_guy": "res://android/build/build/intermediates/assets/standardDebug/timelines/first_level/happy_guy.dtl",
 "forbidden_dialog": "res://timelines/first_level/forbidden_dialog.dtl",
 "happy_guy": "res://timelines/first_level/happy_guy.dtl",
 "introduction": "res://timelines/introduction.dtl",
@@ -47,6 +62,18 @@ directories/dtl_directory={
 "sardine_scene": "res://timelines/sardine_scene.dtl",
 "scrangus_alley": "res://timelines/scrangus_alley.dtl",
 "test_scene_rory": "res://timelines/test_scene_rory.dtl",
+"timelines/calendula_pt_1": "res://android/build/build/intermediates/assets/standardDebug/timelines/calendula_pt_1.dtl",
+"timelines/first_level/door_guy": "res://android/build/assets/timelines/first_level/door_guy.dtl",
+"timelines/first_level/explaining_future_feature": "res://android/build/assets/timelines/first_level/explaining_future_feature.dtl",
+"timelines/first_level/fence_guy": "res://android/build/assets/timelines/first_level/fence_guy.dtl",
+"timelines/first_level/forbidden_dialog": "res://android/build/assets/timelines/first_level/forbidden_dialog.dtl",
+"timelines/first_level/happy_guy": "res://android/build/assets/timelines/first_level/happy_guy.dtl",
+"timelines/introduction": "res://android/build/build/intermediates/assets/standardDebug/timelines/introduction.dtl",
+"timelines/sandy_scene": "res://android/build/build/intermediates/assets/standardDebug/timelines/sandy_scene.dtl",
+"timelines/sardine_scene": "res://android/build/build/intermediates/assets/standardDebug/timelines/sardine_scene.dtl",
+"timelines/scrangus_alley": "res://android/build/build/intermediates/assets/standardDebug/timelines/scrangus_alley.dtl",
+"timelines/test_scene_rory": "res://android/build/build/intermediates/assets/standardDebug/timelines/test_scene_rory.dtl",
+"timelines/tk_pt_1": "res://android/build/build/intermediates/assets/standardDebug/timelines/tk_pt_1.dtl",
 "tk_pt_1": "res://timelines/tk_pt_1.dtl"
 }
 layout/style_list=["res://styles/atomic_sparkle_dialogic_style.tres"]
@@ -71,9 +98,17 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 
+[display]
+
+window/vsync/vsync_mode=0
+
+[editor]
+
+movie_writer/disable_vsync=true
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/quest-system-1.5.0/addons/quest_system/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/quest-system-1.5.0/addons/quest_system/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg", "res://addons/xr_debug_console/plugin.cfg")
 
 [filesystem]
 
@@ -181,5 +216,5 @@ textures/vram_compression/import_etc2_astc=true
 [xr]
 
 openxr/enabled=true
-openxr/extensions/debug_utils=4
+openxr/extensions/debug_utils=3
 shaders/enabled=true

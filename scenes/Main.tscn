@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=9 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" uid="uid://c302xnnnnl3lt" path="res://scripts/main.gd" id="1_otvg2"]
 [ext_resource type="Shader" uid="uid://bnsw6ijnocvj1" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_jipba"]
 [ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://scripts/camera.gd" id="5_wlube"]
 [ext_resource type="PackedScene" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
+[ext_resource type="Script" uid="uid://dhp4y0g8w1wtr" path="res://scenes/xr_camera.gd" id="7_nxtc6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
 shader = ExtResource("3_fcd7d")
@@ -14,6 +15,18 @@ shader_parameter/size_y = 0.002
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 1.2502e-11, 2.91038e-11, 1.13456e-11, 1, 0, 0, 1.45519e-11, 1, 0, 0, 0)
+script = ExtResource("7_nxtc6")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
 
 [node name="LevelAnchor" type="Node3D" parent="."]
 
@@ -106,12 +119,4 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DialogAnchor" type="Node2D" parent="."]
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-
-[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
-
-[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
+[connection signal="input_vector2_changed" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_on_left_hand_input_vector_2_changed"]

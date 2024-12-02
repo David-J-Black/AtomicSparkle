@@ -33,7 +33,6 @@ func _process(delta):
 	# Controller input...
 	var input_dir: Vector2 = Input.get_vector("camera_left", "camera_right", "camera_forward", "camera_ backward")
 
-
 	if input_dir != Vector2.ZERO:
 
 		# Stick moving up/down
