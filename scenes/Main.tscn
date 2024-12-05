@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=12 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" uid="uid://c302xnnnnl3lt" path="res://scripts/main.gd" id="1_otvg2"]
 [ext_resource type="Shader" uid="uid://bnsw6ijnocvj1" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
+[ext_resource type="Script" uid="uid://oawkyqx0gg87" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="3_lhr70"]
 [ext_resource type="Texture2D" uid="uid://da0npfcjgbs2n" path="res://blender/gridmap/materials/white.png" id="4_sajiy"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_wp0k4"]
+[ext_resource type="Script" uid="uid://524woj4e4vuh" path="res://addons/godot-xr-tools/player/player_body.gd" id="5_bjd11"]
 [ext_resource type="PackedScene" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_jipba"]
 [ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://scripts/camera.gd" id="5_wlube"]
 [ext_resource type="PackedScene" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
@@ -27,6 +30,19 @@ tracker = &"left_hand"
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
+
+[node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/RightHand" groups=["movement_providers"]]
+script = ExtResource("3_lhr70")
+strafe = true
+metadata/_custom_type_script = ExtResource("3_lhr70")
+
+[node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"] instance=ExtResource("4_wp0k4")]
+process_priority = -100
+process_physics_priority = -100
+top_level = true
+collision_layer = 524288
+collision_mask = 1023
+script = ExtResource("5_bjd11")
 
 [node name="LevelAnchor" type="Node3D" parent="."]
 

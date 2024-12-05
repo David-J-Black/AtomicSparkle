@@ -1,7 +1,5 @@
-extends Node
-
 ## The entity at which the camera is pointed at
-var camera_base: Node3D:
+var camera_base: CameraBase:
 	set(value):
 		if (value != null):
 			camera = value.get_child(0)

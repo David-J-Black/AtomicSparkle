@@ -9,9 +9,11 @@ class_name CameraBase
 @export var acceptable_x_range := [-80, 80]
 
 var velocity: Vector2 = Vector2.ZERO
+var vr_mode: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	vr_mode = XRServer.get_interface_count() > 0
 	pass # Replace with function body.
 	
 func _input(event: InputEvent):

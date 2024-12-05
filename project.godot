@@ -114,6 +114,10 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godo
 
 import/fbx/enabled=false
 
+[global_group]
+
+movement_providers="Providers of movement!!"
+
 [input]
 
 ui_menu={
