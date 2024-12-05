@@ -1,6 +1,5 @@
 extends Node
 ## The singleton in charge of all level functions
-@onready var Player = preload("res://scenes/player.tscn")
 
 ## The current level
 var level: GameLevel = null

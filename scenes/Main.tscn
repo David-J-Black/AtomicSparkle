@@ -1,15 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=10 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" uid="uid://c302xnnnnl3lt" path="res://scripts/main.gd" id="1_otvg2"]
+[ext_resource type="PackedScene" uid="uid://dwwgp4m4e3enb" path="res://objects/player_controlled/xr_player.tscn" id="2_nxtc6"]
 [ext_resource type="Shader" uid="uid://bnsw6ijnocvj1" path="res://shaders/pixelize.gdshader" id="3_fcd7d"]
-[ext_resource type="Script" uid="uid://oawkyqx0gg87" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="3_lhr70"]
 [ext_resource type="Texture2D" uid="uid://da0npfcjgbs2n" path="res://blender/gridmap/materials/white.png" id="4_sajiy"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_wp0k4"]
-[ext_resource type="Script" uid="uid://524woj4e4vuh" path="res://addons/godot-xr-tools/player/player_body.gd" id="5_bjd11"]
 [ext_resource type="PackedScene" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_jipba"]
-[ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://scripts/camera.gd" id="5_wlube"]
 [ext_resource type="PackedScene" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
-[ext_resource type="Script" uid="uid://dhp4y0g8w1wtr" path="res://scenes/xr_camera.gd" id="7_nxtc6"]
+[ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://objects/camera_handler.gd" id="7_jlsqs"]
+[ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://objects/player_controlled/player.tscn" id="8_jlsqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
 shader = ExtResource("3_fcd7d")
@@ -19,39 +17,10 @@ shader_parameter/size_y = 0.002
 [node name="Main" type="Node3D"]
 script = ExtResource("1_otvg2")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 1.2502e-11, 2.91038e-11, 1.13456e-11, 1, 0, 0, 1.45519e-11, 1, 0, 0, 0)
-script = ExtResource("7_nxtc6")
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-
-[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
-
-[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
-
-[node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/RightHand" groups=["movement_providers"]]
-script = ExtResource("3_lhr70")
-strafe = true
-metadata/_custom_type_script = ExtResource("3_lhr70")
-
-[node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"] instance=ExtResource("4_wp0k4")]
-process_priority = -100
-process_physics_priority = -100
-top_level = true
-collision_layer = 524288
-collision_mask = 1023
-script = ExtResource("5_bjd11")
+[node name="XROrigin3D" parent="." instance=ExtResource("2_nxtc6")]
+transform = Transform3D(1, -1.13456e-11, 1.651e-22, 8.89086e-12, 0.783639, 0.621216, -7.04807e-12, -0.621216, 0.783639, 0, 1.21332, 1.24039)
 
 [node name="LevelAnchor" type="Node3D" parent="."]
-
-[node name="CameraBase" type="Node3D" parent="."]
-transform = Transform3D(1, 0.000629726, -0.000248987, -0.000629744, 1, -6.90102e-05, 0.000248943, 6.91715e-05, 1, 0, 0, 0)
-script = ExtResource("5_wlube")
-
-[node name="Camera3D" type="Camera3D" parent="CameraBase"]
-transform = Transform3D(1, 6.97639e-05, -0.00017496, 9.29453e-05, 0.625147, 0.780507, 0.000163828, -0.780507, 0.625148, -0.00101709, 3.74035, 2.34758)
 
 [node name="PixelizeShader" type="TextureRect" parent="."]
 texture_filter = 1
@@ -135,4 +104,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DialogAnchor" type="Node2D" parent="."]
 
-[connection signal="input_vector2_changed" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_on_left_hand_input_vector_2_changed"]
+[node name="CameraBase" type="Node3D" parent="."]
+script = ExtResource("7_jlsqs")
+
+[node name="Camera3D" type="Camera3D" parent="CameraBase"]
+transform = Transform3D(1, 0, 0, 0, 0.617914, 0.786245, 0, -0.786245, 0.617914, 0, 2.9893, 2.45506)
+
+[node name="Player" parent="." instance=ExtResource("8_jlsqs")]
+jump_velocity = 5

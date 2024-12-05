@@ -17,18 +17,19 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogService="*res://scripts/services/dialog_service.gd"
+DialogService="*res://service/dialog_service.gd"
 QuestSystem="*res://addons/quest-system-1.5.0/addons/quest_system/quest_manager.gd"
-CameraService="*res://scripts/services/camera_service.gd"
-GameService="*res://scripts/services/game_service.gd"
-MenuService="*res://scripts/services/menu_service.gd"
-LevelService="*res://scripts/services/level_service.gd"
-SaveService="*res://scripts/services/save_service.gd"
-GuiService="*res://scripts/services/gui_service.gd"
-QuestService="*res://scripts/services/quest_service.gd"
+CameraService="*res://service/camera_service.gd"
+GameService="*res://service/game_service.gd"
+MenuService="*res://service/menu_service.gd"
+LevelService="*res://service/level_service.gd"
+SaveService="*res://service/save_service.gd"
+GuiService="*res://service/gui_service.gd"
+QuestService="*res://service/quest_service.gd"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 DK="*res://addons/xr_debug_console/debug_konsole.gd"
+XRPlayerService="*res://service/xr_player_service.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

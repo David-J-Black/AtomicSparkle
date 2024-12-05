@@ -1,24 +1,14 @@
-## The entity at which the camera is pointed at
-var camera_base: CameraBase:
-	set(value):
-		if (value != null):
-			camera = value.get_child(0)
-		camera_base = value
+extends Node
 
-var camera: Camera3D = null
-var xr_origin: XROrigin3D:
-	set(value):
-		if(value != null):
-			self.add_child(xr_origin)
-		xr_origin = value
+## The entity at which the camera is pointed at
+var camera_base: CameraHandler
+var xr_camera: XRCamera3D
 	
 var warned_about_missing_camera_or_player: bool = false
 
-func setup(camera_base: Node3D):
-	self.camera_base = camera_base
-
 func _process(delta):
-	move_camera_to_player()
+	if not XRPlayerService.xr_enabled:
+		move_camera_to_player()
 	
 func move_camera_to_player():
 	var player = GameService.player
@@ -44,3 +34,8 @@ func unproject_position(position: Vector3) -> Vector2:
 			return child.unproject_position(position)
 	
 	return Vector2.ZERO
+	
+func get_camera_transform() -> Transform3D:
+	if XRPlayerService.xr_enabled:
+		return Vector3.ZERO if xr_camera == null else xr_camera.transform
+	return Vector3.ZERO if camera_base == null or camera_base.camera == null else camera_base.camera.transform

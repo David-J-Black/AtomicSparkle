@@ -1,25 +1,20 @@
 extends Node3D
-class_name CameraBase
+class_name CameraHandler
 
 # Control Mouse Sensitivity through inspector or from here
 @export var mouse_sensitivity := 0.2
 @export var analog_sensitivity: float = 5
-@export var camera_follow_speed := 10
 
 @export var acceptable_x_range := [-80, 80]
 
 var velocity: Vector2 = Vector2.ZERO
-var vr_mode: bool = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	vr_mode = XRServer.get_interface_count() > 0
-	pass # Replace with function body.
+@onready var camera: Camera3D = $Camera3D
+	
+func _init() -> void:
+	CameraService.camera_base = self
 	
 func _input(event: InputEvent):
 	pass
-	# Going to keep the camera static for a second
-
 	#if event is InputEventMouseMotion and Input.is_action_pressed('mouse_click'):
 				#print("Mouse Clicked")
 				#rotation_degrees.x -= event.relative.y * mouse_sensitivity
@@ -30,6 +25,9 @@ func _input(event: InputEvent):
 
 
 func _process(delta):
+	
+	if not XRPlayerService.xr_enabled and not $Camera3D.current:
+		$Camera3D.current = true
 		
 	var initial_rotation = Vector2(rotation_degrees.x, rotation_degrees.y)
 	# Controller input...

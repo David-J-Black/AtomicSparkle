@@ -21,6 +21,7 @@ var jump_hold_time: float = 0
 var has_ground_been_touched: bool = true
 
 func _ready():
+	GameService.player = self
 	player_model.play_animation("idle", Animation.LOOP_PINGPONG)
 
 func _input(_event: InputEvent) -> void:
@@ -38,6 +39,38 @@ func _input(_event: InputEvent) -> void:
 				if body.has_method("on_player_interact"):
 					body.on_player_interact()
 
+# Adjust's the input direction so we know where the player wants to go
+# Outputs it on an xz plane
+func _get_input_direction() -> Vector2:
+	if are_controls_suspended():
+		return Vector2.ZERO
+	
+	# TODO: Make a setting for ambidextrious stuff
+	var xr_controller = XRPlayerService.get_controller(XRPlayerService.character_control_hand)
+	
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var xr_input: Vector2 = xr_controller.get_vector2("primary")
+	xr_input.y = -xr_input.y
+	
+	# Select regular input or XR input
+	if input_dir == Vector2.ZERO:
+		input_dir = xr_input
+		
+	var rotation := Vector3.ZERO
+	
+	if XRPlayerService.xr_enabled:
+		var controller: XRController3D = XRPlayerService.get_controller(XRPlayerService.character_control_hand)
+		rotation = controller.rotation
+	else:
+		var camera: CameraHandler = CameraService.camera_base
+		rotation = camera.rotation
+	
+	if rotation:
+		# Now consider the camera rotation with how to process the analog input
+		# *touches earth: "Linear algebra was here..."
+		input_dir = input_dir.rotated(-rotation.y)
+	return input_dir
+
 func _physics_process(delta):
 	process_jump(delta)
 
@@ -49,7 +82,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir: Vector2 = Vector2.ZERO if are_controls_suspended() else get_input_direction()
+	var input_dir: Vector2 = _get_input_direction()
 
 	if input_dir.length() > 0:
 		rotate_player(input_dir)
@@ -81,21 +114,9 @@ func rotate_player(input_dir: Vector2):
 	var current_angle: float = self.rotation.y
 	var desired_angle: float = -input_dir.angle()
 	self.rotation.y = lerp_angle(current_angle, desired_angle, ROTATIONAL_SPEED)
-
-
-# Adjust's the input direction so we know where the player wants to go
-# Outputs it on an xz plane
-func get_input_direction() -> Vector2:
-	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var camera: Node3D = CameraService.camera_base
-	if camera:
-		# Now consider the camera rotation with how to process the analog input
-		# *touches earth: "Linear algebra was here..."
-		input_dir = input_dir.rotated(-camera.rotation.y)
-	return input_dir
 	
 func process_jump(delta: float) -> void:
-
+	
 	# If player holds jump, they can jump a little higher!
 	if Input.is_action_just_pressed("jump")\
 		and has_ground_been_touched\

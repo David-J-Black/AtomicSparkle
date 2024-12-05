@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwwgp4m4e3enb"]
+
+[ext_resource type="Script" uid="uid://dhp4y0g8w1wtr" path="res://objects/player_controlled/xr_player.gd" id="1_sa4sv"]
+[ext_resource type="Script" uid="uid://oawkyqx0gg87" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="2_lwta6"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="3_y0jmw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa4sv"]
+albedo_color = Color(0.215984, 0.199092, 0.999999, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sa4sv"]
+material = SubResource("StandardMaterial3D_sa4sv")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="XROrigin3D" type="XROrigin3D"]
+transform = Transform3D(1, 1.2502e-11, 2.91038e-11, 1.13456e-11, 1, 0, 0, 1.45519e-11, 1, 0, 0, 0)
+script = ExtResource("1_sa4sv")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, -4.23516e-22, 0, 0, 1, 0, 0, 0, 1, -0.0558686, 0.0386193, -5.61984e-13)
+tracker = &"left_hand"
+
+[node name="LeftCube" type="MeshInstance3D" parent="LeftHand"]
+transform = Transform3D(1, -4.23516e-22, 0, 0, 1, 0, 0, 0, 1, -0.107956, 0.0132636, -1.93011e-13)
+mesh = SubResource("BoxMesh_sa4sv")
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, -4.23516e-22, 0, 0, 1, 0, 0, 0, 1, 0.111704, 7.44931e-09, -0.0918899)
+tracker = &"right_hand"
+
+[node name="XRToolsMovementDirect" type="Node" parent="RightHand" groups=["movement_providers"]]
+script = ExtResource("2_lwta6")
+strafe = true
+metadata/_custom_type_script = ExtResource("2_lwta6")
+
+[node name="RightCube" type="MeshInstance3D" parent="RightHand"]
+mesh = SubResource("BoxMesh_sa4sv")
+
+[node name="PlayerBody" parent="." instance=ExtResource("3_y0jmw")]

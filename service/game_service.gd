@@ -1,16 +1,10 @@
 extends Node
 
-var Player: PackedScene = preload("res://scenes/player.tscn")
-
 var _scene_info: GameSceneInformation
 
 ## The player!
 ## Impossible for this to be null? This might change in the future
-var player: Player:
-	get:
-		if player == null:
-			player = Player.instantiate()
-		return player
+var player: Player
 
 # This should only be called by the save service
 func apply_save(save_state: GameSceneInformation):
