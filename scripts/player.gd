@@ -3,6 +3,7 @@ class_name Player
 
 var InteractableEntity: PackedScene = preload("res://scenes/Npc.tscn")
 
+
 const SPEED: float = 5.0
 const ROTATIONAL_SPEED: float = 0.1
 
