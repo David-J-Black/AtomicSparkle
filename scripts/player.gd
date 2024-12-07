@@ -60,8 +60,8 @@ func _get_input_direction() -> Vector2:
 	var rotation := Vector3.ZERO
 	
 	if XRPlayerService.xr_enabled:
-		var controller: XRController3D = XRPlayerService.get_controller(XRPlayerService.character_control_hand)
-		rotation = controller.rotation
+		var xr_body = XRPlayerService.xr_player.player_body
+		rotation = xr_body.rotation
 	else:
 		var camera: CameraHandler = CameraService.camera_base
 		rotation = camera.rotation
@@ -118,22 +118,30 @@ func rotate_player(input_dir: Vector2):
 	
 func process_jump(delta: float) -> void:
 	
+	# Check XR controller input, are they pressing jump?
+	var xr_controller: XRController3D = XRPlayerService.get_controller(XRPlayer.Hand.RIGHT)
+	var xr_button_press: bool = xr_controller.is_button_pressed("ax_button")
+	var standard_controller_jump: bool = Input.is_action_just_pressed("jump")
+	var controls_suspended: bool = are_controls_suspended()
+	
+	var jump_button_pressed = xr_button_press or standard_controller_jump
+		
 	# If player holds jump, they can jump a little higher!
-	if Input.is_action_just_pressed("jump")\
+	if jump_button_pressed\
 		and has_ground_been_touched\
-		and not are_controls_suspended():
+		and not controls_suspended:
 			
 		jump_hold_time = jump_hold_time_limit
-		has_ground_been_touched = false
 	else:
 		# process the time delta...
 		jump_hold_time -= delta
 		
-	if Input.is_action_pressed("jump")\
+	if jump_button_pressed\
 		and jump_hold_time > 0\
 		and has_ground_been_touched\
 		and not are_controls_suspended():
-			
+
+		has_ground_been_touched = false
 		velocity.y = jump_velocity
 	
 ## Checks to see if the player character should be responding to input

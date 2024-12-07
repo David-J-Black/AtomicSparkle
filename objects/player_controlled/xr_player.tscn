@@ -21,8 +21,9 @@ script = ExtResource("1_sa4sv")
 
 [node name="Vignette" parent="XRCamera3D" instance=ExtResource("2_y0jmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.76315e-12, -0.53348)
-auto_adjust = false
-auto_velocity_limit = 20.0
+fade = 0.1
+auto_inner_radius = 0.015
+auto_fade_delay = 0.5
 
 [node name="LeftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, -4.23516e-22, 0, 0, 1, 0, 0, 0, 1, -0.185352, 0.0386193, -0.00542012)
