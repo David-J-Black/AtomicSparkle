@@ -50,4 +50,4 @@ script = ExtResource("19_aelgi")
 name = "atomic_sparkle_dialogic_style"
 base_overrides = {}
 layers = Array[ExtResource("18_ukp5y")]([SubResource("Resource_o2ro1"), SubResource("Resource_lrlr3"), SubResource("Resource_qwude"), SubResource("Resource_woku2"), SubResource("Resource_0w5ls"), SubResource("Resource_wks76"), SubResource("Resource_y1qt3")])
-metadata/_latest_layer = 4
+metadata/_latest_layer = -1

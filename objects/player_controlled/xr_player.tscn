@@ -14,7 +14,6 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [node name="XROrigin3D" type="XROrigin3D"]
 transform = Transform3D(1, 1.2502e-11, 2.91038e-11, 1.13456e-11, 1, 0, 0, 1.45519e-11, 1, 0, 0, 0)
-world_scale = 2.0
 script = ExtResource("1_sa4sv")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]

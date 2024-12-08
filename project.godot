@@ -59,6 +59,7 @@ directories/dtl_directory={
 "forbidden_dialog": "res://timelines/first_level/forbidden_dialog.dtl",
 "happy_guy": "res://timelines/first_level/happy_guy.dtl",
 "introduction": "res://timelines/introduction.dtl",
+"library_guy": "res://timelines/inside_library/library_guy.dtl",
 "sandy_scene": "res://timelines/sandy_scene.dtl",
 "sardine_scene": "res://timelines/sardine_scene.dtl",
 "scrangus_alley": "res://timelines/scrangus_alley.dtl",
@@ -220,6 +221,5 @@ textures/vram_compression/import_etc2_astc=true
 
 [xr]
 
-openxr/enabled=true
 openxr/extensions/debug_utils=3
 shaders/enabled=true

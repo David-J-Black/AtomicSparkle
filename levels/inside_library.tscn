@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ib7bytwm4if"]
+[gd_scene load_steps=8 format=3 uid="uid://1ib7bytwm4if"]
 
 [ext_resource type="Script" uid="uid://poomh6axq4pa" path="res://scripts/types/game_level.gd" id="1_osd7v"]
 [ext_resource type="MeshLibrary" uid="uid://c7ku1drbywlmo" path="res://resources/default_mesh_library.tres" id="2_7orhb"]
 [ext_resource type="Script" uid="uid://ok5lgabcngst" path="res://scripts/types/spawn.gd" id="3_wxcte"]
+[ext_resource type="Script" uid="uid://crme5jfncqg1j" path="res://scripts/types/teleport_area.gd" id="4_m235o"]
+[ext_resource type="PackedScene" uid="uid://ccncqt75nhkug" path="res://scenes/Npc.tscn" id="5_o06v3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o06v3"]
+custom_solver_bias = 0.153
+size = Vector3(1.90863, 1.60217, 0.25)
 
 [sub_resource type="Environment" id="Environment_evrtg"]
 background_mode = 1
@@ -32,9 +38,25 @@ gizmo_extents = 1.25
 script = ExtResource("3_wxcte")
 
 [node name="entrance" type="Marker3D" parent="Entities/Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38528, 1.94712, 10.6773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0788155, 0.718762, 12.8397)
 gizmo_extents = 1.25
 script = ExtResource("3_wxcte")
+
+[node name="Teleports" type="Node" parent="Entities"]
+
+[node name="LibraryEntrance" type="Area3D" parent="Entities/Teleports"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.584148, 13.4179)
+script = ExtResource("4_m235o")
+level_name = "first_level"
+spawn_name = "library_entrance"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/Teleports/LibraryEntrance"]
+shape = SubResource("BoxShape3D_o06v3")
+
+[node name="library_guy" parent="Entities" instance=ExtResource("5_o06v3")]
+transform = Transform3D(0.99986, 0, -0.0167539, 0, 1, 0, 0.0167539, 0, 0.99986, -0.486345, -0.0163355, 7.47197)
+timeline_name = "library_guy"
+looking_behavior = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_evrtg")

@@ -21,9 +21,9 @@ void vertex() {
 		vec4 eye = PROJECTION_MATRIX * vec4(0.0, 0.0, 100.0, 1.0);
 
 		// and we offset our inner circle
-		//v.xy += eye.xy / eye.z;
+		//v.xy += eye.xy / eye.z; // This isn't right???
 	}
-	
+
 	// looks like this is broken in Godot 4...
 	POSITION = vec4(v, 1.0);
 }

@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody3D
 class_name Player
 
@@ -51,21 +52,21 @@ func _get_input_direction() -> Vector2:
 	
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var xr_input: Vector2 = xr_controller.get_vector2("primary")
-	xr_input.y = -xr_input.y
-	
+	xr_input.y = -xr_input.y 
+
 	# Select regular input or XR input
 	if input_dir == Vector2.ZERO:
 		input_dir = xr_input
-		
+
 	var rotation := Vector3.ZERO
-	
+
 	if XRPlayerService.xr_enabled:
 		var xr_body = XRPlayerService.xr_player.player_body
 		rotation = xr_body.rotation
 	else:
 		var camera: CameraHandler = CameraService.camera_base
 		rotation = camera.rotation
-	
+
 	if rotation:
 		# Now consider the camera rotation with how to process the analog input
 		# *touches earth: "Linear algebra was here..."
@@ -82,7 +83,6 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: Vector2 = _get_input_direction()
 
 	if input_dir.length() > 0:
@@ -121,7 +121,7 @@ func process_jump(delta: float) -> void:
 	# Check XR controller input, are they pressing jump?
 	var xr_controller: XRController3D = XRPlayerService.get_controller(XRPlayer.Hand.RIGHT)
 	var xr_button_press: bool = xr_controller.is_button_pressed("ax_button")
-	var standard_controller_jump: bool = Input.is_action_just_pressed("jump")
+	var standard_controller_jump: bool = Input.is_action_pressed("jump")
 	var controls_suspended: bool = are_controls_suspended()
 	
 	var jump_button_pressed = xr_button_press or standard_controller_jump
@@ -132,17 +132,21 @@ func process_jump(delta: float) -> void:
 		and not controls_suspended:
 			
 		jump_hold_time = jump_hold_time_limit
+		has_ground_been_touched = false
+		
+		
 	else:
 		# process the time delta...
 		jump_hold_time -= delta
 		
 	if jump_button_pressed\
 		and jump_hold_time > 0\
-		and has_ground_been_touched\
-		and not are_controls_suspended():
-
-		has_ground_been_touched = false
+		and not has_ground_been_touched\
+		and not controls_suspended:
+		
 		velocity.y = jump_velocity
+	
+		
 	
 ## Checks to see if the player character should be responding to input
 func are_controls_suspended() -> bool:

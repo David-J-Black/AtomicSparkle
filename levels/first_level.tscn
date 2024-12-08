@@ -15,7 +15,6 @@ ambient_light_energy = 0.62
 reflected_light_source = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1irnc"]
-custom_solver_bias = 0.153
 size = Vector3(1.90863, 1.60217, 0.25)
 
 [node name="FirstLevel" type="Node3D"]
@@ -38,8 +37,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05902, 0.614722, -3.17175)
 gizmo_extents = 1.25
 script = ExtResource("3_8bweu")
 
+[node name="library_entrance" type="Marker3D" parent="Entities/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96318, 0.702309, -2.97549)
+gizmo_extents = 1.25
+script = ExtResource("3_8bweu")
+
 [node name="door_guy" parent="Entities" instance=ExtResource("4_snoak")]
-transform = Transform3D(-0.99774, 0, 0.0671965, 0, 1, 0, -0.0671965, 0, -0.99774, 1.97067, -0.0163357, -3.60359)
+transform = Transform3D(-0.99774, 0, 0.0671965, 0, 1, 0, -0.0671965, 0, -0.99774, 0.482305, -0.0163355, -3.67558)
 timeline_name = "door_guy"
 looking_behavior = 0
 
@@ -92,13 +96,12 @@ looking_behavior = 1
 [node name="Teleports" type="Node" parent="Entities"]
 
 [node name="LibraryEntrance" type="Area3D" parent="Entities/Teleports"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.795844, -2.77917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03219, 0.659156, -3.9012)
 script = ExtResource("5_3l0c1")
 level_name = "inside_library"
 spawn_name = "entrance"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/Teleports/LibraryEntrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00705, 0.0530014, -1.10229)
 shape = SubResource("BoxShape3D_1irnc")
 
 [connection signal="child_entered_tree" from="Entities" to="." method="_on_entities_child_entered_tree"]

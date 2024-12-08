@@ -65,6 +65,7 @@ func _clear_levels_except(level: GameLevel = null) -> void:
 func spawn_player(chosen_level: GameLevel, spawn_name: String = ''):
 	assert(level != null, "No level anchor, cannot spawn_player")
 	var spawn = chosen_level.get_spawn(spawn_name)
+	assert(spawn != null, "Null spawn [%s]" % spawn_name)
 	
 	var player = GameService.player
 	chosen_level.entities.add_child(player)

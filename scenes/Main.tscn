@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dot2pmvw6gxnf"]
+[gd_scene load_steps=11 format=3 uid="uid://dot2pmvw6gxnf"]
 
 [ext_resource type="Script" uid="uid://c302xnnnnl3lt" path="res://scripts/main.gd" id="1_otvg2"]
 [ext_resource type="PackedScene" uid="uid://dwwgp4m4e3enb" path="res://objects/player_controlled/xr_player.tscn" id="2_nxtc6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://components/touch_screen_action_button.tscn" id="6_6i4rv"]
 [ext_resource type="Script" uid="uid://bdwpqh863k26" path="res://objects/camera_handler.gd" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://dd7vr74jyu88o" path="res://objects/player_controlled/player.tscn" id="8_jlsqs"]
+[ext_resource type="PackedScene" uid="uid://dqufx7gqb6mqp" path="res://components/inventory_menu.tscn" id="9_q8u5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27lwr"]
 shader = ExtResource("3_fcd7d")
@@ -112,3 +113,5 @@ transform = Transform3D(1, 0, 0, 0, 0.617914, 0.786245, 0, -0.786245, 0.617914, 
 
 [node name="Player" parent="." instance=ExtResource("8_jlsqs")]
 jump_velocity = 5
+
+[node name="InventoryMenu" parent="." instance=ExtResource("9_q8u5g")]
