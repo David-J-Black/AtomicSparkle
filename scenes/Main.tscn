@@ -112,6 +112,5 @@ script = ExtResource("7_jlsqs")
 transform = Transform3D(1, 0, 0, 0, 0.617914, 0.786245, 0, -0.786245, 0.617914, 0, 2.9893, 2.45506)
 
 [node name="Player" parent="." instance=ExtResource("8_jlsqs")]
-jump_velocity = 5
 
 [node name="InventoryMenu" parent="." instance=ExtResource("9_q8u5g")]
